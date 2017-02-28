@@ -24,8 +24,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp \
-    databaseinterface.cpp
+        mainwindow.cpp
 
 HEADERS  += mainwindow.h \
     databaseinterface.h
