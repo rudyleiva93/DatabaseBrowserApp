@@ -12,7 +12,7 @@ databaseInterface::databaseInterface()
     {
         if(myDB.open())
         {
-
+            qDebug () << "Succesfully connected to database.";
         }
     }
     else

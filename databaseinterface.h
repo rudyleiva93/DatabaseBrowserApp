@@ -10,6 +10,9 @@ class databaseInterface
 {
 public:
     databaseInterface();
+
+private:
+    QSqlDatabase myDB;
 };
 
 #endif // DATABASEINTERFACE_H

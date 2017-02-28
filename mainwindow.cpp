@@ -18,5 +18,5 @@ MainWindow::~MainWindow()
 void MainWindow::on_pushButton_login_clicked()
 {
     QString username = ui->lineEdit_username->text();
-    QString username = ui->lineEdit_password->text();
+    QString password = ui->lineEdit_password->text();
 }
