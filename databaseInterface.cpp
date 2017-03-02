@@ -2,7 +2,7 @@
 
 databaseInterface::databaseInterface()
 {
-    this->connection = "C:/Users/Rudy/Documents/GitHub/DatabaseBrowserApp/DBbrowser.db";
+    //this->connection = "C:/Users/Rudy/Documents/GitHub/DatabaseBrowserApp/DBbrowser.db";
 }
 
 databaseInterface::databaseInterface(QString connection)
@@ -13,8 +13,8 @@ databaseInterface::databaseInterface(QString connection)
 bool databaseInterface::validate(QString username, QString password)
 {
     myDB = QSqlDatabase::addDatabase("QSQLITE");
-    myDB.setDatabaseName(connection);
-
+    myDB.setDatabaseName("C:/Users/Rudy/Documents/GitHub/DatabaseBrowserApp/DBbrowser.db");
+    myDB.open();
     QSqlQuery qry;
 
     if(qry.exec("SELECT * FROM USERS WHERE USERNAME ='" + username + "' AND PASSWD = '" + password + "'"))

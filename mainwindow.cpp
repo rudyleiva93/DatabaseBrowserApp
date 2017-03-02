@@ -29,13 +29,22 @@ void MainWindow::on_pushButton_login_clicked()
     username = ui -> lineEdit_username -> text();
     password = ui -> lineEdit_password -> text();
 
-    databaseInterface db;
-    if(db.validate(username, password))
+    databaseInterface *db = new databaseInterface();
+    if(db->validate(username, password))
     {
         // To be continued here....
+        this->hide();
+        applicationWindow app;
+        app.setModal(true);
+        app.exec();
     }
     else
     {
 
     }
+}
+
+void MainWindow::on_pushButton_signUp_clicked()
+{
+
 }
