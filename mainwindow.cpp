@@ -46,5 +46,8 @@ void MainWindow::on_pushButton_login_clicked()
 
 void MainWindow::on_pushButton_signUp_clicked()
 {
-
+    this->hide();
+    signUpWindow w;
+    w.setModal(true);
+    w.exec();
 }

@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "applicationWindow.h"
+#include "signUpWindow.h"
 
 namespace Ui {
 class MainWindow;
