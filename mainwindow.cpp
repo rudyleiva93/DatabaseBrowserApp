@@ -40,7 +40,7 @@ void MainWindow::on_pushButton_login_clicked()
     }
     else
     {
-
+        ui->label_status->setText("Invalid username and/or password");
     }
 }
 

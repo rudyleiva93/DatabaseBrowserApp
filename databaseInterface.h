@@ -13,12 +13,14 @@ public:
     databaseInterface(QString connection);
     bool validate(QString username, QString password);
 
+    //databaseInterface *db = new databaseInterface();
+
 //private slots:
     //bool validate(QString username, QString password);
 
 private:
     QSqlDatabase myDB;
-    QString connection;
+    QString connection;  
 };
 
 #endif // DATABASEINTERFACE_H

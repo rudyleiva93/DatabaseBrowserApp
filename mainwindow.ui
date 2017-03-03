@@ -74,7 +74,7 @@
       </item>
      </layout>
     </widget>
-    <widget class="QWidget" name="">
+    <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
        <x>40</x>
@@ -106,12 +106,12 @@
      <rect>
       <x>60</x>
       <y>215</y>
-      <width>121</width>
+      <width>301</width>
       <height>21</height>
      </rect>
     </property>
     <property name="text">
-     <string>[+]Status</string>
+     <string/>
     </property>
    </widget>
   </widget>
