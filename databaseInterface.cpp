@@ -3,6 +3,8 @@
 databaseInterface::databaseInterface()
 {
     this->connection = "C:/Users/Rudy/Documents/GitHub/DatabaseBrowserApp/DBbrowser.db";
+    myDB = QSqlDatabase::addDatabase("QSQLITE");
+    myDB.setDatabaseName(connection);
 }
 
 databaseInterface::databaseInterface(QString connection)
@@ -12,8 +14,6 @@ databaseInterface::databaseInterface(QString connection)
 
 bool databaseInterface::validate(QString username, QString password)
 {
-    myDB = QSqlDatabase::addDatabase("QSQLITE");
-    myDB.setDatabaseName(connection);
     myDB.open();
 
     QSqlQuery qry;
@@ -34,6 +34,7 @@ bool databaseInterface::validate(QString username, QString password)
         }
         else
         {
+            myDB.close();
             return false;
         }
     }

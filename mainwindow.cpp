@@ -1,21 +1,12 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "databaseInterface.h"
+//#include "databaseInterface.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
-   /* if(!myDB.open())
-    {
-        ui->label_status->setText("Failed to connect!");
-    }
-    else
-    {
-        ui ->label_status->setText("Connected...");
-    }*/
 }
 
 MainWindow::~MainWindow()
@@ -29,7 +20,6 @@ void MainWindow::on_pushButton_login_clicked()
     username = ui -> lineEdit_username -> text();
     password = ui -> lineEdit_password -> text();
 
-    databaseInterface *db = new databaseInterface();
     if(db->validate(username, password))
     {
         // To be continued here....
