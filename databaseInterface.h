@@ -4,23 +4,23 @@
 #include <QMainWindow>
 #include <QDebug>
 #include <QtSql>
+#include <QSqlDatabase>
 #include <QFileInfo>
+#include <QMessageBox>
 
 class databaseInterface
 {
 public:
+    QSqlDatabase myDB;
+
     databaseInterface();
     databaseInterface(QString connection);
+    void closeConnection();
     bool validate(QString username, QString password);
-
-
-    //databaseInterface *db = new databaseInterface();
-
-//private slots:
-    //bool validate(QString username, QString password);
+    void signUp(QString usernameEntered, QString passwordEntered);
 
 private:
-    QSqlDatabase myDB;
+    //QSqlDatabase *myDB;
     QString connection;  
 };
 

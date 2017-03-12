@@ -12,3 +12,16 @@ signUpWindow::~signUpWindow()
 {
     delete ui;
 }
+
+void signUpWindow::on_pushButton_signUp_clicked()
+{
+    //db->databaseInterface();
+    QString usernameEntered, passwordEntered;
+
+    usernameEntered = ui->lineEdit_entrUsnm->text();
+    passwordEntered = ui->lineEdit_entrPsswd->text();
+    qDebug()<< usernameEntered;
+    qDebug()<< passwordEntered;
+
+    db.signUp(usernameEntered, passwordEntered);
+}

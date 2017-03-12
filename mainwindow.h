@@ -5,6 +5,7 @@
 #include "applicationWindow.h"
 #include "signUpWindow.h"
 #include "databaseInterface.h"
+//#include "dbconnection.h"
 
 namespace Ui {
 class MainWindow;
@@ -18,7 +19,7 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
-    databaseInterface *db = new databaseInterface();
+    databaseInterface db;// = new databaseInterface();
 
 private slots:
     void on_pushButton_login_clicked();
