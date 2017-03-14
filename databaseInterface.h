@@ -6,7 +6,6 @@
 #include <QtSql>
 #include <QSqlDatabase>
 #include <QFileInfo>
-#include <QMessageBox>
 
 class databaseInterface
 {
@@ -17,7 +16,7 @@ public:
     databaseInterface(QString connection);
     void closeConnection();
     bool validate(QString username, QString password);
-    void signUp(QString usernameEntered, QString passwordEntered);
+    bool signUp(QString usernameEntered, QString passwordEntered);
 
 private:
     //QSqlDatabase *myDB;

@@ -15,7 +15,6 @@ signUpWindow::~signUpWindow()
 
 void signUpWindow::on_pushButton_signUp_clicked()
 {
-    //db->databaseInterface();
     QString usernameEntered, passwordEntered;
 
     usernameEntered = ui->lineEdit_entrUsnm->text();
@@ -23,5 +22,12 @@ void signUpWindow::on_pushButton_signUp_clicked()
     qDebug()<< usernameEntered;
     qDebug()<< passwordEntered;
 
-    db.signUp(usernameEntered, passwordEntered);
+    if (db.signUp(usernameEntered, passwordEntered))
+    {
+        QMessageBox::information(this,"Sign Up","You have successfuly signed up :D");
+    }
+    else
+    {
+        QMessageBox::critical(this,"Sign Up","You were not able to sign up!! :(");
+    }
 }

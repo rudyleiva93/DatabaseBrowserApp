@@ -2,10 +2,12 @@
 #define SIGNUPWINDOW_H
 
 #include <QDialog>
+#include <QMessageBox>
+#include <QtCore>
+#include <QtGui>
 #include "databaseInterface.h"
 #include "mainwindow.h"
 #include "databaseInterface.h"
-//#include "dbconnection.h"
 
 namespace Ui {
 class signUpWindow;
@@ -19,7 +21,7 @@ public:
     explicit signUpWindow(QWidget *parent = 0);
     ~signUpWindow();
 
-    databaseInterface db; //= new databaseInterface();
+    databaseInterface db;
 
 
 private slots:

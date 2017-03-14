@@ -1,6 +1,4 @@
 #include "databaseInterface.h"
-#include <QMessageBox>
-
 databaseInterface::databaseInterface()
 {
     this->connection = "C:/Users/Rudy/Documents/GitHub/DatabaseBrowserApp/DBbrowser.db";
@@ -15,9 +13,6 @@ void databaseInterface::closeConnection()
     myDB = QSqlDatabase();
     myDB.removeDatabase(connection);
     myDB.removeDatabase(QSqlDatabase::defaultConnection);
-    //QSqlDatabase::removeDatabase(connection);
-    //delete myDB;
-    //QSqlDatabase::~QSqlDatabase();
 }
 
 databaseInterface::databaseInterface(QString connection)
@@ -25,7 +20,6 @@ databaseInterface::databaseInterface(QString connection)
     this->connection = connection;
     myDB = QSqlDatabase(QSqlDatabase::addDatabase("QSQLITE"));
     myDB.setDatabaseName(connection);
-    //myDB->open();
 }
 
 bool databaseInterface::validate(QString username, QString password)
@@ -50,11 +44,10 @@ bool databaseInterface::validate(QString username, QString password)
         }
 
     }
-    //myDB->close();
     return false;
 }
 
-void databaseInterface::signUp(QString usernameEntered, QString passwordEntered)
+bool databaseInterface::signUp(QString usernameEntered, QString passwordEntered)
 {
     //myDB->open();
 
@@ -63,21 +56,15 @@ void databaseInterface::signUp(QString usernameEntered, QString passwordEntered)
                 "VALUES(:USERNAME, :PASSWD)");
     qry.bindValue(":USERNAME", usernameEntered);
     qry.bindValue(":PASSWD",passwordEntered);
-    //qry.exec("INSERT INTO USERS (USERNAME,PASSWD" \
-             "VALUES('"+usernameEntered+"', '"+passwordEntered+")");
-    /*qry.prepare("INSERT INTO USERS (USERNAME,PASSWD" \
-             "VALUES (?, ?)");
-    qry.addBindValue(usernameEntered);
-    qry.addBindValue(passwordEntered);*/
 
-    qDebug()<<qry.exec()<<endl;
-    /*if(qry.exec())
+    //qDebug()<<qry.exec()<<endl;
+    if(qry.exec())
     {
-        QMessageBox::information(this,"Save","Saved");
+        return true;
     }
     else
     {
-        QMessageBox::critical(this,"Error::",qry.lastError().text());
-    }*/
+        return false;
+    }
 
 }

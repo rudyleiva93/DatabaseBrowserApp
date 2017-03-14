@@ -25,7 +25,6 @@ void MainWindow::on_pushButton_login_clicked()
         applicationWindow app;
         app.setModal(true);
         app.exec();
-        //db->closeConnection();
     }
     else
     {

@@ -5,7 +5,6 @@
 #include "applicationWindow.h"
 #include "signUpWindow.h"
 #include "databaseInterface.h"
-//#include "dbconnection.h"
 
 namespace Ui {
 class MainWindow;
