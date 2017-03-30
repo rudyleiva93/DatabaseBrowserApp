@@ -23,9 +23,10 @@ public:
 
     databaseInterface db;
 
-
 private slots:
     void on_pushButton_signUp_clicked();
+
+    void on_pushButton_close_clicked();
 
 private:
     Ui::signUpWindow *ui;

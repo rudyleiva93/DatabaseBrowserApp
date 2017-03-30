@@ -16,7 +16,7 @@
   <widget class="QPushButton" name="pushButton_signUp">
    <property name="geometry">
     <rect>
-     <x>150</x>
+     <x>70</x>
      <y>150</y>
      <width>93</width>
      <height>28</height>
@@ -26,7 +26,7 @@
     <string>Sign up</string>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>50</x>
@@ -65,6 +65,19 @@
      </layout>
     </item>
    </layout>
+  </widget>
+  <widget class="QPushButton" name="pushButton_close">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>150</y>
+     <width>93</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Close</string>
+   </property>
   </widget>
  </widget>
  <resources/>

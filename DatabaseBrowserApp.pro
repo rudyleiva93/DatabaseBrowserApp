@@ -27,14 +27,35 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     databaseInterface.cpp \
     applicationWindow.cpp \
-    signUpWindow.cpp
+    signUpWindow.cpp \
+    createTable.cpp \
+    createDatabase.cpp \
+    OpenDatabase.cpp \
+    backupDatabase.cpp \
+    deleteTable.cpp \
+    Insert.cpp \
+    Delete.cpp
 
 HEADERS  += mainwindow.h \
     databaseinterface.h \
     databaseInterface.h \
     applicationWindow.h \
-    signUpWindow.h
+    signUpWindow.h \
+    createTable.h \
+    createDatabase.h \
+    OpenDatabase.h \
+    backupDatabase.h \
+    deleteTable.h \
+    Insert.h \
+    Delete.h
 
 FORMS    += mainwindow.ui \
     applicationWindow.ui \
-    signUpWindow.ui
+    signUpWindow.ui \
+    createTable.ui \
+    createDatabase.ui \
+    opendatabase.ui \
+    backupDatabase.ui \
+    deleteTable.ui \
+    Insert.ui \
+    Delete.ui
