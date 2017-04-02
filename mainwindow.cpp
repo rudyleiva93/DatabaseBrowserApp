@@ -21,6 +21,7 @@ void MainWindow::on_pushButton_login_clicked()
 
     if(db.validate(username, password))
     {
+        db.closeConnection();
         this->hide();
         applicationWindow app;
         app.setModal(true);

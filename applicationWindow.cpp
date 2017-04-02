@@ -20,17 +20,12 @@ void applicationWindow::on_pushButton_openDatabase_clicked()
 
 void applicationWindow::on_pushButton_createDatabase_clicked()
 {
-    createTable w;
+    createDatabase w;
     w.setModal(true);
     w.exec();
 }
 
 void applicationWindow::on_pushButton_backupDatabse_clicked()
-{
-
-}
-
-void applicationWindow::on_pushButton_modifyTable_clicked()
 {
 
 }

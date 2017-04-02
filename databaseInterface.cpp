@@ -36,12 +36,14 @@ bool databaseInterface::validate(QString username, QString password)
 
         int x = QString::compare(name, username);
         int y = QString::compare(passwd, password);
-        if(x == 0 && y ==0)
+
+        return (x == 0 && y == 0);
+        /*if(x == 0 && y == 0)
         {
             //qDebug() << "They match";
             //myDB->close();
             return true;
-        }
+        }*/
 
     }
     return false;
@@ -67,4 +69,23 @@ bool databaseInterface::signUp(QString usernameEntered, QString passwordEntered)
         return false;
     }
 
+}
+
+bool databaseInterface::isDBName(QString dbNameEntered)
+{
+    QSqlQuery qry;
+    qry.prepare("SELECT * FROM DATABASES WHERE DB_NAME = :DBNAME_ENTERED");
+    qry.bindValue(":DBNAME_ENTERED", dbNameEntered);
+
+   if(!qry.exec())
+   {
+        qDebug()<<qry.lastError()<<endl;
+   }
+   while(qry.next())
+   {
+       QString dbName = qry.value(0).toString();
+       int result = QString::compare(dbName, dbNameEntered);
+       return(result == 0);
+   }
+   return false;
 }

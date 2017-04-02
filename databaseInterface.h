@@ -17,9 +17,9 @@ public:
     void closeConnection();
     bool validate(QString username, QString password);
     bool signUp(QString usernameEntered, QString passwordEntered);
+    bool isDBName(QString dbNameEntered);
 
 private:
-    //QSqlDatabase *myDB;
     QString connection;  
 };
 

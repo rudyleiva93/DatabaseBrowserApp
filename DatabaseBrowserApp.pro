@@ -40,7 +40,6 @@ SOURCES += main.cpp\
 HEADERS  += mainwindow.h \
     databaseinterface.h \
     databaseInterface.h \
-    applicationWindow.h \
     signUpWindow.h \
     createTable.h \
     createDatabase.h \
@@ -49,7 +48,8 @@ HEADERS  += mainwindow.h \
     deleteTable.h \
     Insert.h \
     Delete.h \
-    createDB_Function.h
+    createDB_Function.h \
+    applicationwindow.h
 
 FORMS    += mainwindow.ui \
     applicationWindow.ui \

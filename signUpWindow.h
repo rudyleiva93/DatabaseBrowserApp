@@ -7,7 +7,7 @@
 #include <QtGui>
 #include "databaseInterface.h"
 #include "mainwindow.h"
-#include "databaseInterface.h"
+//#include "databaseInterface.h"
 
 namespace Ui {
 class signUpWindow;
