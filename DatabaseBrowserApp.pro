@@ -34,7 +34,8 @@ SOURCES += main.cpp\
     backupDatabase.cpp \
     deleteTable.cpp \
     Insert.cpp \
-    Delete.cpp
+    Delete.cpp \
+    createDB_Function.cpp
 
 HEADERS  += mainwindow.h \
     databaseinterface.h \
@@ -47,7 +48,8 @@ HEADERS  += mainwindow.h \
     backupDatabase.h \
     deleteTable.h \
     Insert.h \
-    Delete.h
+    Delete.h \
+    createDB_Function.h
 
 FORMS    += mainwindow.ui \
     applicationWindow.ui \
