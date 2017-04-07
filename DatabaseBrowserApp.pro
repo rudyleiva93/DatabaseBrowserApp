@@ -35,7 +35,8 @@ SOURCES += main.cpp\
     deleteTable.cpp \
     Insert.cpp \
     Delete.cpp \
-    createDB_Function.cpp
+    sqlite3.c \
+    DatabaseHandler.cpp
 
 HEADERS  += mainwindow.h \
     databaseinterface.h \
@@ -48,8 +49,10 @@ HEADERS  += mainwindow.h \
     deleteTable.h \
     Insert.h \
     Delete.h \
-    createDB_Function.h \
-    applicationwindow.h
+    applicationwindow.h \
+    sqlite3.h \
+    sqlite3ext.h \
+    DatabaseHandler.h
 
 FORMS    += mainwindow.ui \
     applicationWindow.ui \
