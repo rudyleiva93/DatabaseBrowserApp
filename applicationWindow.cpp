@@ -1,11 +1,13 @@
 #include "applicationWindow.h"
 #include "ui_applicationWindow.h"
 
-applicationWindow::applicationWindow(QWidget *parent) :
+applicationWindow::applicationWindow(User user, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::applicationWindow)
 {
     ui->setupUi(this);
+    this->user = user;
+    //qDebug()<< user.getUsername()<<endl;
 }
 
 applicationWindow::~applicationWindow()

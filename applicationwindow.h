@@ -4,6 +4,7 @@
 #include <QDialog>
 #include "createDatabase.h"
 #include "createTable.h"
+#include "User.h"
 
 namespace Ui {
 class applicationWindow;
@@ -14,7 +15,7 @@ class applicationWindow : public QDialog
     Q_OBJECT
 
 public:
-    explicit applicationWindow(QWidget *parent = 0);
+    explicit applicationWindow(User, QWidget *parent = 0);
     ~applicationWindow();
 
 private slots:
@@ -31,6 +32,7 @@ private slots:
 
 private:
     Ui::applicationWindow *ui;
+    User user;
 };
 
 #endif // APPLICATIONWINDOW_H

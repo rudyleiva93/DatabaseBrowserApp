@@ -16,14 +16,26 @@ MainWindow::~MainWindow()
 void MainWindow::on_pushButton_login_clicked()
 {
     QString username, password;
+    int uid;
     username = ui ->lineEdit_username->text();
     password = ui ->lineEdit_password->text();
+    //uid = db.getUID(username);
+    //qInfo()<< uid<<endl;
 
     if(db.validate(username, password))
     {
+        uid = db.getUID(username);
+        //qInfo()<< uid<<endl;
         db.closeConnection();
+        //User user;
+        user.setUsername(username);
+        user.setPassword(password);
+        user.setUID(uid);
+        //qDebug()<<user.getUID()<<endl;
+        //qDebug()<<user.getUsername()<<endl;
+        //qDebug()<<user.getPassword()<<endl;
         this->hide();
-        applicationWindow app;
+        applicationWindow app (user);
         app.setModal(true);
         app.exec();
     }

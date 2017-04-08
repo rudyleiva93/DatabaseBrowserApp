@@ -60,14 +60,7 @@ bool databaseInterface::signUp(QString usernameEntered, QString passwordEntered)
     qry.bindValue(":PASSWD",passwordEntered);
 
     //qDebug()<<qry.exec()<<endl;
-    if(qry.exec())
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
+    return qry.exec();
 
 }
 
@@ -77,10 +70,10 @@ bool databaseInterface::isDBName(QString dbNameEntered)
     qry.prepare("SELECT * FROM DATABASES WHERE DB_NAME = :DBNAME_ENTERED");
     qry.bindValue(":DBNAME_ENTERED", dbNameEntered);
 
-   if(!qry.exec())
+   /*if(!qry.exec())
    {
         qDebug()<<qry.lastError()<<endl;
-   }
+   }*/
    while(qry.next())
    {
        QString dbName = qry.value(0).toString();
@@ -88,4 +81,46 @@ bool databaseInterface::isDBName(QString dbNameEntered)
        return(result == 0);
    }
    return false;
+}
+
+bool databaseInterface::addDatabase(QString dbNameEntered)
+{
+    QSqlQuery qry;
+    qry.prepare("INSERT INTO DATABASES (DB_NAME)" \
+                "VALUES (:DB_NAME)");
+    qry.bindValue(":DB_NAME", dbNameEntered);
+
+    if(!qry.exec())
+    {
+        qDebug()<<qry.lastError().text()<<endl;
+    }
+    //return qry.exec();
+
+}
+
+void databaseInterface::insertUID_intoDATABASES(QString username)
+{
+    QSqlQuery qry;
+    qry.prepare("INSERT INTO DATABASES (UID)" \
+                "SELECT USERS.UID" \
+                "FROM USERS" \
+                "WHERE USERS.USERNAME = :USERNAME");
+    qry.bindValue(":USERNAME", username);
+}
+
+int databaseInterface::getUID(QString username)
+{
+    QSqlQuery qry;
+    qry.prepare("SELECT UID FROM USERS WHERE USERNAME = :USERNAME");
+    qry.bindValue(":USERNAME", username);
+    qry.exec();
+
+    if(qry.first())
+    {
+        while(qry.next())
+        {
+            this->uid = qry.value(0).toInt();
+        }
+    }
+    return uid;
 }

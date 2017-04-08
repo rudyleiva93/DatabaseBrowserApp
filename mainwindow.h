@@ -5,6 +5,7 @@
 #include "applicationWindow.h"
 #include "signUpWindow.h"
 #include "databaseInterface.h"
+#include "User.h"
 
 namespace Ui {
 class MainWindow;
@@ -17,6 +18,7 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+    User user;
 
     databaseInterface db;// = new databaseInterface();
 

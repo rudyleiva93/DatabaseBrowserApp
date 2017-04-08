@@ -18,9 +18,13 @@ public:
     bool validate(QString username, QString password);
     bool signUp(QString usernameEntered, QString passwordEntered);
     bool isDBName(QString dbNameEntered);
+    bool addDatabase(QString dbNameEntered);
+    int getUID(QString username);
+    void insertUID_intoDATABASES(QString username);
 
 private:
-    QString connection;  
+    QString connection;
+    int uid;
 };
 
 #endif // DATABASEINTERFACE_H
