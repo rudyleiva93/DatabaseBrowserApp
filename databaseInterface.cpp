@@ -70,35 +70,84 @@ bool databaseInterface::isDBName(QString dbNameEntered)
     qry.prepare("SELECT * FROM DATABASES WHERE DB_NAME = :DBNAME_ENTERED");
     qry.bindValue(":DBNAME_ENTERED", dbNameEntered);
 
-   /*if(!qry.exec())
+   if(!qry.exec())
    {
         qDebug()<<qry.lastError()<<endl;
-   }*/
-   while(qry.next())
-   {
-       QString dbName = qry.value(0).toString();
-       int result = QString::compare(dbName, dbNameEntered);
-       return(result == 0);
    }
+   else
+   {
+        while(qry.next())
+        {
+            QString dbName = qry.value(0).toString();
+            int result = QString::compare(dbName, dbNameEntered);
+            return(result == 0);
+        }
+    }
    return false;
 }
 
-bool databaseInterface::addDatabase(QString dbNameEntered)
+bool databaseInterface::addDatabase(QString username, QString dbNameEntered)
 {
+    myDB.transaction();
     QSqlQuery qry;
-    qry.prepare("INSERT INTO DATABASES (DB_NAME)" \
+    qry.prepare("SELECT UID FROM USERS WHERE USERNAME = :USERNAME");
+    qry.bindValue(":USERNAME", username);
+
+    if (!qry.exec()) {
+        qDebug()<<qry.lastError().text()<<endl;;
+    } else if (!qry.first()) {
+        qDebug()<<"No Unchecked invoice in the database"<<endl;
+    } else {
+        do {
+            int uid = (qry.value(0).toInt());
+            //qDebug()<<uid<<endl;
+            qry.prepare("INSERT INTO DATABASES (DB_NAME, UID)" \
+                                "VALUES (:DB_NAME, :UID)");
+            qry.bindValue(":DB_NAME", dbNameEntered);
+            qry.bindValue(":UID", uid);
+            if(!qry.exec())
+                qDebug()<<qry.lastError().text();
+        } while(qry.next());
+        qry.clear();
+        myDB.commit();
+        return true;
+    }
+    return false;
+
+    //if(!qry.exec())
+        //qDebug()<<"Query not executed"<<endl;
+
+    //qry.first();
+    //qDebug()<<"Found: "<<endl;
+    //if(!qry.next())
+    //{
+        //qDebug()<<qry.lastError().text()<<endl; //Use qry.first(): http://stackoverflow.com/questions/7099643/query-next-returning-false
+        //int uid = qry.value(0).toInt();
+        //qDebug()<<uid<<endl;
+        //qry.prepare("INSERT INTO DATABSES (DB_NAME, UID)" \
+                    "VALUES (:DB_NAME, :UID)");
+        //qry.bindValue(":DB_NAME", dbNameEntered);
+        //qry.bindValue(":UID", uid);
+    //}
+
+    //qDebug()<<qry.exec()<<endl;
+    //qry.clear();
+    //myDB.commit();
+    //qDebug()<<qry.lastError().text()<<endl;
+
+    /*qry.prepare("INSERT INTO DATABASES (DB_NAME)" \
                 "VALUES (:DB_NAME)");
     qry.bindValue(":DB_NAME", dbNameEntered);
 
     if(!qry.exec())
     {
         qDebug()<<qry.lastError().text()<<endl;
-    }
+    }*/
     //return qry.exec();
 
 }
 
-void databaseInterface::insertUID_intoDATABASES(QString username)
+/*void databaseInterface::insertUID_intoDATABASES(QString username)
 {
     QSqlQuery qry;
     qry.prepare("INSERT INTO DATABASES (UID)" \
@@ -106,7 +155,7 @@ void databaseInterface::insertUID_intoDATABASES(QString username)
                 "FROM USERS" \
                 "WHERE USERS.USERNAME = :USERNAME");
     qry.bindValue(":USERNAME", username);
-}
+}*/
 
 int databaseInterface::getUID(QString username)
 {

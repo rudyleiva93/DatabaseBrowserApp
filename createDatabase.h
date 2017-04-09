@@ -13,12 +13,12 @@ namespace Ui {
 class createDatabase;
 }
 
-class createDatabase : public QDialog //, public MainWindow /* Trying to inherit user from main window to use user.getUsername and query into db*/
+class createDatabase : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit createDatabase(QWidget *parent = 0);
+    explicit createDatabase(User, QWidget *parent = 0);
     ~createDatabase();
     databaseInterface db;
     //static User MainWindow::user;
@@ -30,6 +30,7 @@ private slots:
 
 private:
     Ui::createDatabase *ui;
+    User user;
 };
 //static User MainWindow::user;
 

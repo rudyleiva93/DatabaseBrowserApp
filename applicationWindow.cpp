@@ -22,7 +22,7 @@ void applicationWindow::on_pushButton_openDatabase_clicked()
 
 void applicationWindow::on_pushButton_createDatabase_clicked()
 {
-    createDatabase w;
+    createDatabase w(user);
     w.setModal(true);
     w.exec();
 }
