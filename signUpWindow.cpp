@@ -2,11 +2,12 @@
 #include "ui_signUpWindow.h"
 #include "mainwindow.h"
 
-signUpWindow::signUpWindow(QWidget *parent) :
+signUpWindow::signUpWindow(MainWindow *mw, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::signUpWindow)
 {
     ui->setupUi(this);
+    this->mw = mw;
 }
 
 signUpWindow::~signUpWindow()
@@ -20,8 +21,6 @@ void signUpWindow::on_pushButton_signUp_clicked()
 
     usernameEntered = ui->lineEdit_entrUsnm->text();
     passwordEntered = ui->lineEdit_entrPsswd->text();
-    //qDebug()<< usernameEntered;
-    //qDebug()<< passwordEntered;
 
     if (db.signUp(usernameEntered, passwordEntered))
     {
@@ -35,7 +34,7 @@ void signUpWindow::on_pushButton_signUp_clicked()
 
 void signUpWindow::on_pushButton_close_clicked()
 {
-    db.closeConnection();
     this->hide();
+    mw->show();
 
 }

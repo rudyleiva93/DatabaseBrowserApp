@@ -6,58 +6,71 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>360</width>
-    <height>183</height>
+    <width>627</width>
+    <height>229</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Create Table</string>
   </property>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>150</x>
-     <y>110</y>
-     <width>80</width>
-     <height>25</height>
+     <x>200</x>
+     <y>150</y>
+     <width>172</width>
+     <height>27</height>
     </rect>
    </property>
-   <property name="text">
-    <string>Ok</string>
-   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout_6">
+    <item>
+     <widget class="QPushButton" name="pushButton_createTable">
+      <property name="text">
+       <string>Create Table</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pushButton_close">
+      <property name="text">
+       <string>Close</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
-  <widget class="QPushButton" name="pushButton_2">
+  <widget class="QLabel" name="label_result">
    <property name="geometry">
     <rect>
-     <x>260</x>
-     <y>110</y>
-     <width>80</width>
-     <height>25</height>
+     <x>110</x>
+     <y>130</y>
+     <width>391</width>
+     <height>16</height>
     </rect>
    </property>
    <property name="text">
-    <string>Cancel</string>
+    <string/>
    </property>
   </widget>
   <widget class="QWidget" name="">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>30</y>
-     <width>321</width>
+     <x>30</x>
+     <y>90</y>
+     <width>521</width>
      <height>26</height>
     </rect>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
-     <widget class="QLabel" name="label_enterTableName">
+     <widget class="QLabel" name="label">
       <property name="text">
-       <string>Eneter Table Name</string>
+       <string>Enter Query</string>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QLineEdit" name="lineEdit_tableName"/>
+     <widget class="QLineEdit" name="lineEdit_statement"/>
     </item>
    </layout>
   </widget>

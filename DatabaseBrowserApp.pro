@@ -33,11 +33,10 @@ SOURCES += main.cpp\
     OpenDatabase.cpp \
     backupDatabase.cpp \
     deleteTable.cpp \
-    Insert.cpp \
-    Delete.cpp \
     sqlite3.c \
     DatabaseHandler.cpp \
-    User.cpp
+    User.cpp \
+    ModifyTable.cpp
 
 HEADERS  += mainwindow.h \
     databaseinterface.h \
@@ -48,13 +47,12 @@ HEADERS  += mainwindow.h \
     OpenDatabase.h \
     backupDatabase.h \
     deleteTable.h \
-    Insert.h \
-    Delete.h \
     applicationwindow.h \
     sqlite3.h \
     sqlite3ext.h \
     DatabaseHandler.h \
-    User.h
+    User.h \
+    ModifyTable.h
 
 FORMS    += mainwindow.ui \
     applicationWindow.ui \
@@ -64,5 +62,4 @@ FORMS    += mainwindow.ui \
     opendatabase.ui \
     backupDatabase.ui \
     deleteTable.ui \
-    Insert.ui \
-    Delete.ui
+    ModifyTable.ui

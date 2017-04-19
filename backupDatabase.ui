@@ -6,35 +6,13 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
+    <width>509</width>
     <height>300</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Backup Database</string>
   </property>
-  <widget class="QWidget" name="layoutWidget">
-   <property name="geometry">
-    <rect>
-     <x>40</x>
-     <y>120</y>
-     <width>341</width>
-     <height>26</height>
-    </rect>
-   </property>
-   <layout class="QHBoxLayout" name="horizontalLayout">
-    <item>
-     <widget class="QLabel" name="label_dbToBackup">
-      <property name="text">
-       <string>Enter Database to backup: </string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLineEdit" name="lineEdit_dbToBackup"/>
-    </item>
-   </layout>
-  </widget>
   <widget class="QPushButton" name="pushButton_backupDB">
    <property name="geometry">
     <rect>
@@ -46,6 +24,59 @@
    </property>
    <property name="text">
     <string>Backup</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>120</y>
+     <width>341</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QLabel" name="label_dbToBackup">
+        <property name="text">
+         <string>Enter Database to backup: </string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="lineEdit_dbToBackup"/>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QLabel" name="label_backup">
+        <property name="text">
+         <string>Enter Backup Filename: </string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="lineEdit_backupFileName"/>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QPushButton" name="pushButton_browse">
+   <property name="geometry">
+    <rect>
+     <x>400</x>
+     <y>150</y>
+     <width>80</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Browse</string>
    </property>
   </widget>
  </widget>

@@ -7,7 +7,7 @@
 #include <QtGui>
 #include "databaseInterface.h"
 #include "mainwindow.h"
-//#include "databaseInterface.h"
+class MainWindow;
 
 namespace Ui {
 class signUpWindow;
@@ -18,7 +18,7 @@ class signUpWindow : public QDialog
     Q_OBJECT
 
 public:
-    explicit signUpWindow(QWidget *parent = 0);
+    explicit signUpWindow(MainWindow *, QWidget *parent = 0);
     ~signUpWindow();
 
     databaseInterface db;
@@ -30,6 +30,7 @@ private slots:
 
 private:
     Ui::signUpWindow *ui;
+    MainWindow *mw;
 };
 
 #endif // SIGNUPWINDOW_H

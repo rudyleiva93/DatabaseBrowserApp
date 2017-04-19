@@ -21,12 +21,15 @@ public:
     explicit createDatabase(User, QWidget *parent = 0);
     ~createDatabase();
     databaseInterface db;
+    DatabaseHandler dh;
     //static User MainWindow::user;
 
 private slots:
     //void on_pushButton_clicked();
 
     void on_pushButton_createDB_clicked();
+
+    void on_pushButton_2_clicked();
 
 private:
     Ui::createDatabase *ui;

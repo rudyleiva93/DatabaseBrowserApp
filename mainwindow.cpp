@@ -19,21 +19,14 @@ void MainWindow::on_pushButton_login_clicked()
     int uid;
     username = ui ->lineEdit_username->text();
     password = ui ->lineEdit_password->text();
-    //uid = db.getUID(username);
-    //qInfo()<< uid<<endl;
 
     if(db.validate(username, password))
     {
         uid = db.getUID(username);
-        //qInfo()<< uid<<endl;
         db.closeConnection();
-        //User user;
         user.setUsername(username);
         user.setPassword(password);
         user.setUID(uid);
-        //qDebug()<<user.getUID()<<endl;
-        //qDebug()<<user.getUsername()<<endl;
-        //qDebug()<<user.getPassword()<<endl;
         this->hide();
         applicationWindow app (user);
         app.setModal(true);
@@ -49,7 +42,7 @@ void MainWindow::on_pushButton_signUp_clicked()
 {
     db.closeConnection();
     this->hide();
-    signUpWindow w;
+    signUpWindow w(this);
     w.setModal(true);
     w.exec();
 }

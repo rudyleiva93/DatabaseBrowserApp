@@ -36,3 +36,13 @@ void User::setUID(int uid)
 {
     this->uid = uid;
 }
+
+void User::setDatabaseName(QString dbName)
+{
+    this->dbName = dbName;
+}
+
+QString User::getDatabaseName()
+{
+    return dbName;
+}

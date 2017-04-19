@@ -35,18 +35,31 @@
     </item>
    </layout>
   </widget>
-  <widget class="QPushButton" name="pushButton_deleteTable">
+  <widget class="QWidget" name="">
    <property name="geometry">
     <rect>
-     <x>160</x>
-     <y>210</y>
-     <width>80</width>
-     <height>25</height>
+     <x>120</x>
+     <y>180</y>
+     <width>169</width>
+     <height>27</height>
     </rect>
    </property>
-   <property name="text">
-    <string>Delete</string>
-   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout_2">
+    <item>
+     <widget class="QPushButton" name="pushButton_deleteTable">
+      <property name="text">
+       <string>Delete</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pushButton">
+      <property name="text">
+       <string>PushButton</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
  </widget>
  <resources/>

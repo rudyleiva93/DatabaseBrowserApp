@@ -1,6 +1,7 @@
 #include "databaseInterface.h"
 databaseInterface::databaseInterface()
 {
+    /* Connects to the database in order to insert or retrive user information */
     this->connection = "C:/Users/Rudy/Documents/GitHub/DatabaseBrowserApp/DBbrowser.db";
     myDB = QSqlDatabase (QSqlDatabase::addDatabase("QSQLITE"));
     myDB.setDatabaseName(connection);
@@ -9,6 +10,8 @@ databaseInterface::databaseInterface()
 
 void databaseInterface::closeConnection()
 {
+    /* Closes and removes the database connection.
+     * Always called after an operation is preformed on the database*/
     myDB.close();
     myDB = QSqlDatabase();
     myDB.removeDatabase(connection);
@@ -17,6 +20,7 @@ void databaseInterface::closeConnection()
 
 databaseInterface::databaseInterface(QString connection)
 {
+    /* Connects to a user specified database */
     this->connection = connection;
     myDB = QSqlDatabase(QSqlDatabase::addDatabase("QSQLITE"));
     myDB.setDatabaseName(connection);
@@ -24,26 +28,24 @@ databaseInterface::databaseInterface(QString connection)
 
 bool databaseInterface::validate(QString username, QString password)
 {
-    //myDB->open();
+    /* Function to validate a if a username and password exist in the database.
+     * If it does nont exist the user will have to sign up. */
 
-    QSqlQuery qry;
-    qry.exec("SELECT USERNAME, PASSWD FROM USERS");
+    QSqlQuery qry; // Initilizes an object of QSqlQuery in order to execute and manipulate SQL statments.
+    qry.exec("SELECT USERNAME, PASSWD FROM USERS"); // Executes the query within the quotes.
 
+    // Retrieves the next record in the result,if available, and positions the query on the retrieved record.
     while(qry.next())
     {
+        // Returns the value of field in the current record.
         QString name = qry.value(0). toString();
         QString passwd = qry.value(1).toString();
 
+        // Compares the values retrived from database with the inputed values from user.
         int x = QString::compare(name, username);
         int y = QString::compare(passwd, password);
 
-        return (x == 0 && y == 0);
-        /*if(x == 0 && y == 0)
-        {
-            //qDebug() << "They match";
-            //myDB->close();
-            return true;
-        }*/
+        return (x == 0 && y == 0); // returns true if values match, otherwise returns false
 
     }
     return false;
@@ -51,15 +53,17 @@ bool databaseInterface::validate(QString username, QString password)
 
 bool databaseInterface::signUp(QString usernameEntered, QString passwordEntered)
 {
-    //myDB->open();
 
     QSqlQuery qry;
+    // Prepares the SQL query for execution. Returns true if the query is prepared successfully, otherwise returns false.
     qry.prepare("INSERT INTO USERS (USERNAME,PASSWD)" \
                 "VALUES(:USERNAME, :PASSWD)");
+    /* Set the placeholders (":USERNAME" & ":PASSWD")to be bound to the value (usernameEntered & passwordEntered) respectively.
+     * This method is used in order to prevent SQL injection. */
     qry.bindValue(":USERNAME", usernameEntered);
     qry.bindValue(":PASSWD",passwordEntered);
 
-    //qDebug()<<qry.exec()<<endl;
+    // Executes the query and returns true if it executed successfuly, ohterwise returns false.
     return qry.exec();
 
 }
@@ -70,6 +74,8 @@ bool databaseInterface::isDBName(QString dbNameEntered)
     qry.prepare("SELECT * FROM DATABASES WHERE DB_NAME = :DBNAME_ENTERED");
     qry.bindValue(":DBNAME_ENTERED", dbNameEntered);
 
+   /* If query does not execute, returns erros.
+    * Else, qry retirves the values from database, compares them and returns true or false depending on result. */
    if(!qry.exec())
    {
         qDebug()<<qry.lastError()<<endl;
@@ -88,13 +94,16 @@ bool databaseInterface::isDBName(QString dbNameEntered)
 
 bool databaseInterface::addDatabase(QString username, QString dbNameEntered)
 {
+    // Prepares database for a transaction. Returns true is successful otherwise returns false.
     myDB.transaction();
     QSqlQuery qry;
+    // Selects the user ID for the username entered by user
     qry.prepare("SELECT UID FROM USERS WHERE USERNAME = :USERNAME");
     qry.bindValue(":USERNAME", username);
 
     if (!qry.exec()) {
-        qDebug()<<qry.lastError().text()<<endl;;
+        qDebug()<<qry.lastError().text()<<endl;
+      // Retrieves the first record in the result, if available, and positions the query on the retrieved record.
     } else if (!qry.first()) {
         qDebug()<<"No Unchecked invoice in the database"<<endl;
     } else {
@@ -107,7 +116,10 @@ bool databaseInterface::addDatabase(QString username, QString dbNameEntered)
             if(!qry.exec())
                 qDebug()<<qry.lastError().text();
         } while(qry.next());
+        // Clears the result set and releases any resources held by the query. Sets the query state to inactive.
         qry.clear();
+        /* Commits a transaction to the database if a transaction() has been started.
+         * Returns true if successful, otherwise returns false. */
         myDB.commit();
         return true;
     }
@@ -116,16 +128,21 @@ bool databaseInterface::addDatabase(QString username, QString dbNameEntered)
 
 int databaseInterface::getUID(QString username)
 {
+    /* This method was made for the User class
+     * so it can have easy access to the user's ID needed for other classes */
     QSqlQuery qry;
+    int uid;
     qry.prepare("SELECT UID FROM USERS WHERE USERNAME = :USERNAME");
     qry.bindValue(":USERNAME", username);
-    qry.exec();
 
-    if(qry.first())
+    if(qry.exec())
     {
-        while(qry.next())
+        if(qry.first())
         {
-            this->uid = qry.value(0).toInt();
+            do
+            {
+                uid = qry.value(0).toInt();
+            }while(qry.next());
         }
     }
     return uid;

@@ -3,16 +3,12 @@
 #include "applicationwindow.h"
 #include "mainwindow.h"
 
-
-//static User MainWindow::user;
-
 createDatabase::createDatabase(User user, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::createDatabase)
 {
     ui->setupUi(this);
     this->user = user;
-    qDebug()<<user.getUsername()<<endl;
 }
 
 createDatabase::~createDatabase()
@@ -22,27 +18,24 @@ createDatabase::~createDatabase()
 
 void createDatabase::on_pushButton_createDB_clicked()
 {
-    qInfo()<<"Clicked";
     QString dbNameEntered;
 
     dbNameEntered = ui->lineEdit_dbNameEntered->text();
 
     if(db.isDBName(dbNameEntered))
     {
-        qInfo()<<"DataBase exists"<<endl;
+        ui->label_result->setText("Database already exists! Choose another name!");
     }
     else
     {
-        if(db.addDatabase(user.getUsername() ,dbNameEntered))
-            qInfo()<<"DataBase added"<<endl;
-        else
-            qInfo()<<"DataBase NOT added"<<endl;
+       dh.CreateDatabase(dbNameEntered);
+       db.addDatabase(user.getUsername() ,dbNameEntered);
+       ui->label_result->setText("Database craeted!!");
     }
+}
 
-    /* Create a function on dtabasaeInterface that will check if the dbNameEntered already exists in the database.
-     *  If (dbNameEntered exists)
-     *      Display Error message and promt user to enter another db name
-     *  else
-     *      create a new object for createDB_Function(dbNameEntred)
-     *      which will create a new database and save it on a folder in the computer. */
+void createDatabase::on_pushButton_2_clicked()
+{
+    db.closeConnection();
+    this->hide();
 }

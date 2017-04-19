@@ -24,7 +24,7 @@ public:
 
 private:
     QString connection;
-    int uid;
+    //int uid;
 };
 
 #endif // DATABASEINTERFACE_H
