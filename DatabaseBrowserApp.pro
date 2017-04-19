@@ -59,7 +59,6 @@ FORMS    += mainwindow.ui \
     signUpWindow.ui \
     createTable.ui \
     createDatabase.ui \
-    opendatabase.ui \
     backupDatabase.ui \
     deleteTable.ui \
     ModifyTable.ui
