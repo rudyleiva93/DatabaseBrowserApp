@@ -33,21 +33,28 @@ bool databaseInterface::validate(QString username, QString password)
      * If it does nont exist the user will have to sign up. */
 
     QSqlQuery qry; // Initilizes an object of QSqlQuery in order to execute and manipulate SQL statments.
-    qry.exec("SELECT USERNAME, PASSWD FROM USERS"); // Executes the query within the quotes.
+    qry.prepare("SELECT USERNAME, PASSWD FROM USERS"); // Executes the query within the quotes.
 
     // Retrieves the next record in the result,if available, and positions the query on the retrieved record.
-    while(qry.next())
+    if(qry.exec())
     {
-        // Returns the value of field in the current record.
-        QString name = qry.value(0). toString();
-        QString passwd = qry.value(1).toString();
+        if(qry.first())
+        {
+            do
+            {
+                // Returns the value of field in the current record.
+                QString name = qry.value(0). toString();
+                QString passwd = qry.value(1).toString();
 
-        // Compares the values retrived from database with the inputed values from user.
-        int x = QString::compare(name, username);
-        int y = QString::compare(passwd, password);
-
-        return (x == 0 && y == 0); // returns true if values match, otherwise returns false
-
+                // Compares the values retrived from database with the inputed values from user.
+                int x = QString::compare(name, username);
+                int y = QString::compare(passwd, password);
+                if(x == 0 && y == 0)
+                {
+                    return true;
+                }
+            }while(qry.next());
+        }
     }
     return false;
 }
