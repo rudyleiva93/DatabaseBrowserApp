@@ -17,7 +17,7 @@
    <property name="geometry">
     <rect>
      <x>450</x>
-     <y>100</y>
+     <y>120</y>
      <width>751</width>
      <height>561</height>
     </rect>
@@ -73,7 +73,7 @@
   <widget class="QLabel" name="label_result">
    <property name="geometry">
     <rect>
-     <x>810</x>
+     <x>880</x>
      <y>60</y>
      <width>361</width>
      <height>16</height>
@@ -83,20 +83,7 @@
     <string/>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_refresh">
-   <property name="geometry">
-    <rect>
-     <x>1090</x>
-     <y>50</y>
-     <width>91</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Refresh</string>
-   </property>
-  </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>812</x>
@@ -113,6 +100,28 @@
      <widget class="QPushButton" name="pushButton_openDatabase">
       <property name="text">
        <string>Open Database</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>956</x>
+     <y>90</y>
+     <width>231</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout_2">
+    <item>
+     <widget class="QLineEdit" name="lineEdit_tableName"/>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pushButton_loadTable">
+      <property name="text">
+       <string>Load Table</string>
       </property>
      </widget>
     </item>

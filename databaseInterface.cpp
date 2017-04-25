@@ -24,6 +24,7 @@ databaseInterface::databaseInterface(QString connection)
     this->connection = connection;
     myDB = QSqlDatabase(QSqlDatabase::addDatabase("QSQLITE"));
     myDB.setDatabaseName(connection);
+    myDB.open();
 }
 
 bool databaseInterface::validate(QString username, QString password)
@@ -146,4 +147,20 @@ int databaseInterface::getUID(QString username)
         }
     }
     return uid;
+}
+
+void databaseInterface::viewTable(QTableView *tableView, QString tableName)
+{
+    QSqlQueryModel *modal = new QSqlQueryModel();
+    QSqlQuery query;
+
+    if(!query.prepare("SELECT * FROM " + tableName))
+        qDebug()<<query.lastError().text()<<endl;
+
+    query.exec();
+
+    modal->setQuery(query);
+    qDebug()<<modal->lastError()<<endl;
+    tableView->setModel(modal);
+    tableView->show();
 }

@@ -30,7 +30,6 @@ SOURCES += main.cpp\
     signUpWindow.cpp \
     createTable.cpp \
     createDatabase.cpp \
-    OpenDatabase.cpp \
     backupDatabase.cpp \
     deleteTable.cpp \
     sqlite3.c \
@@ -44,7 +43,6 @@ HEADERS  += mainwindow.h \
     signUpWindow.h \
     createTable.h \
     createDatabase.h \
-    OpenDatabase.h \
     backupDatabase.h \
     deleteTable.h \
     applicationwindow.h \

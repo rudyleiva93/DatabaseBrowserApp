@@ -6,6 +6,7 @@
 #include <QtSql>
 #include <QSqlDatabase>
 #include <QFileInfo>
+#include <QTableView>
 
 class databaseInterface
 {
@@ -20,7 +21,7 @@ public:
     bool isDBName(QString dbNameEntered);
     bool addDatabase(QString username, QString dbNameEntered);
     int getUID(QString username);
-    //void insertUID_intoDATABASES(QString username);
+    void viewTable(QTableView *tableView, QString tableName);
 
 private:
     QString connection;
