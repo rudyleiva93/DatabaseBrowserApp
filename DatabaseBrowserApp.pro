@@ -31,7 +31,6 @@ SOURCES += main.cpp\
     createTable.cpp \
     createDatabase.cpp \
     backupDatabase.cpp \
-    deleteTable.cpp \
     sqlite3.c \
     DatabaseHandler.cpp \
     User.cpp \
@@ -44,7 +43,6 @@ HEADERS  += mainwindow.h \
     createTable.h \
     createDatabase.h \
     backupDatabase.h \
-    deleteTable.h \
     applicationwindow.h \
     sqlite3.h \
     sqlite3ext.h \
@@ -58,5 +56,4 @@ FORMS    += mainwindow.ui \
     createTable.ui \
     createDatabase.ui \
     backupDatabase.ui \
-    deleteTable.ui \
     ModifyTable.ui
