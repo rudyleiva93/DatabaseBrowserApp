@@ -27,6 +27,14 @@ databaseInterface::databaseInterface(QString connection)
     myDB.open();
 }
 
+void databaseInterface::reOpenConnection()
+{
+    this->connection = "C:/Users/Rudy/Documents/GitHub/DatabaseBrowserApp/DBbrowser.db";
+    myDB = QSqlDatabase (QSqlDatabase::addDatabase("QSQLITE"));
+    myDB.setDatabaseName(connection);
+    myDB.open();
+}
+
 bool databaseInterface::validate(QString username, QString password)
 {
     /* Function to validate a if a username and password exist in the database.

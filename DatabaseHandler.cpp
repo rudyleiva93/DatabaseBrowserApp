@@ -99,7 +99,7 @@ bool DatabaseHandler::CreateTable(QString databaseName, QString statement)
 
 int DatabaseHandler::BackupDatabase(QString databaseFileName, QString backupFileName, int isSave)
 {
-     const char *zFileName;
+     //const char *zFileName;
      // Add a database connection of type QSqlDatabase
      QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE", backupFileName);
      db.open(); // Opens the QSqlDatabse type
@@ -116,7 +116,7 @@ int DatabaseHandler::BackupDatabase(QString databaseFileName, QString backupFile
         sqlite3 *handle = *static_cast<sqlite3 **>(v.data());
 
         if (handle != 0) { // check that it is not NULL
-        sqlite3 *p; //without this there is a crash.
+        sqlite3 *p; //without this there is a crash. Used to connect to original databse.
 
         // The next two lines is used to turn the QString databaseFilename into a cost char *
         QByteArray ba1 = databaseFileName.toLatin1();
@@ -125,6 +125,7 @@ int DatabaseHandler::BackupDatabase(QString databaseFileName, QString backupFile
         if (result == SQLITE_OK)
         {
             //sqlite3_close(p);
+            const char *zFileName;
             int rc;                   // Function return code
             sqlite3 *pFile;           // Database connection opened on zFilename
             sqlite3_backup *pBackup;  // Backup object used to copy data
@@ -170,7 +171,7 @@ void DatabaseHandler::viewDatabase(QString databaseName)
        char *sql;
        const char* data = "Callback function called";
 
-       /* Open database */
+       //Open database
        rc = sqlite3_open(databaseName.toStdString().c_str(), &db);
        if( rc ){
           fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
@@ -179,12 +180,12 @@ void DatabaseHandler::viewDatabase(QString databaseName)
           fprintf(stderr, "Opened database successfully\n");
        }
 
-       /* Create SQL statement */
+       //Create SQL statement
        sql = "SELECT * from PERSON";
        //QByteArray ba = query.toLatin1();
        //sql = ba.data();
 
-       /* Execute SQL statement */
+       //Execute SQL statement
        rc = sqlite3_exec(db, sql, callback, (void*)data, &zErrMsg);
        if( rc != SQLITE_OK ){
           fprintf(stderr, "SQL error: %s\n", zErrMsg);

@@ -22,6 +22,7 @@ public:
     bool addDatabase(QString username, QString dbNameEntered);
     int getUID(QString username);
     void viewTable(QTableView *tableView, QString tableName);
+    void reOpenConnection();
 
 private:
     QString connection;

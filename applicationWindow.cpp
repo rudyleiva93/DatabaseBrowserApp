@@ -42,6 +42,7 @@ void applicationWindow::on_pushButton_createDatabase_clicked()
     createDatabase cd(user);
     cd.setModal(true);
     cd.exec();
+    db.reOpenConnection();
 }
 
 void applicationWindow::on_pushButton_backupDatabse_clicked()
@@ -77,5 +78,6 @@ void applicationWindow::on_pushButton_loadTable_clicked()
     databaseInterface *database = new databaseInterface (connection);
     database->viewTable(ui->tableView, tableName);
     database->closeConnection();
+    db.reOpenConnection();
 }
 
